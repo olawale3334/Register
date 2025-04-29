@@ -7,28 +7,30 @@
     <title>LOGIN</title>
 </head>
 <body>
-    <div class=" p-8 bg-gradient-to-r from-blue-400 to-blue-700 text-white h-screen">
-       <div class=" max-w-md p-8 mx-auto bg-blue-200 border-[3px] border-red-700">
+    <div class="  bg-gradient-to-r from-blue-400 to-blue-700  h-screen">
+       <div class=" max-w-md p-3   mx-auto bg-blue-200 border-[3px] border-red-700">
+            <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">Register</h1>
           <form>
-            <div>
-             <label > Fullname</label>
-             <input type="text" name="Fullname">
+            <div class="mb-5">
+             <label class="text-2xl block" > Fullname</label>
+             <input class="p-2" type="text" name="Fullname" placeholder="Fullname">
             </div>
-            <div>
-                <label >Email</label>
-                <input type="text" name="Email">
+            <div class="mb-5">
+                <label class="text-2xl block" >Email</label>
+                <input class="p-2" type="text" name="Email" placeholder="Email">
             </div>
-            <div>
-                <label >phone</label>
-                <input type="number" name="phone">
+            <div class="mb-5">
+                <label class="text-2xl block"  >phone</label>
+                <input class="p-2" type="number" name="phone" placeholder="phone number">
             </div>
-            <div>
-                <label >Password</label>
-                <input type="password" name="password">
+            <div class="mb-5">
+                <label class="text-2xl block" >Password</label>
+                <input class="p-2" type="password" name="password" placeholder="************">
+                  <button id="show" class=" hidden bg-black p-2 text-white  lg:block md:block ">Show Password</button>
             </div>
-            <div>
-                <label >Date of birth</label>
-                <input type="date" name="date">
+            <div >
+                <label class="text-2xl block"  >Date of birth</label>
+                <input class="p-2" type="date" name="date">
             </div>
            </form>
        </div>
