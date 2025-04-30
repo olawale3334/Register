@@ -11,8 +11,9 @@
      
     <div class="  bg-gradient-to-r from-blue-400 to-blue-700  h-screen">
        <div class=" max-w-md p-8   mx-auto bg-blue-200 border-[3px] border-red-700">
-            <div id="outcome"></div>
+            
             <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">Register</h1>
+            <div id="outcome"></div>
           <form>
             <div id="fullname" class="mb-5">
              <label class="text-2xl block" > Fullname</label>
@@ -75,13 +76,15 @@
                 span.innerText ="full name can not be empty"
                 document.getElementById("fullname").append(span)
              }
-             if(!email || email== ""){
-                isvalid =false;
-                let span =document.createElement("span")
-                span.classList.add ("text-red-500", "block")
-                span.innerText ="email can not be empty"
-                document.getElementById("email").append(span)
-             }
+                 let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                if (!email || email == "") {
+                isvalid = false;
+                document.getElementById("email").innerHTML += `<span class="text-red-500 block">Email cannot be empty</span>`;
+                } else if (!emailPattern.test(email)) {
+                isvalid = false;
+                document.getElementById("email").innerHTML += `<span class="text-red-500 block">Invalid email address</span>`;
+                }
 
 
              function calculateAge(birthDate) {
