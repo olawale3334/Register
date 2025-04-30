@@ -11,29 +11,61 @@
        <div class=" max-w-md p-3   mx-auto bg-blue-200 border-[3px] border-red-700">
             <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">Register</h1>
           <form>
-            <div class="mb-5">
+            <div id="fullname" class="mb-5">
              <label class="text-2xl block" > Fullname</label>
              <input class="p-2" type="text" name="Fullname" placeholder="Fullname">
             </div>
-            <div class="mb-5">
+            <div id="email" class="mb-5">
                 <label class="text-2xl block" >Email</label>
-                <input class="p-2" type="text" name="Email" placeholder="Email">
+                <input class="p-2" type="email" name="Email" placeholder="Email">
             </div>
-            <div class="mb-5">
-                <label class="text-2xl block"  >phone</label>
-                <input class="p-2" type="number" name="phone" placeholder="phone number">
-            </div>
-            <div class="mb-5">
-                <label class="text-2xl block" >Password</label>
-                <input class="p-2" type="password" name="password" placeholder="************">
-                  <button id="show" class=" hidden bg-black p-2 text-white  lg:block md:block ">Show Password</button>
-            </div>
-            <div >
+            <div id="date" class="mb-5" >
                 <label class="text-2xl block"  >Date of birth</label>
                 <input class="p-2" type="date" name="date">
             </div>
+            <div id="phone" class="mb-5">
+                <label class="text-2xl block"  >phone</label>
+                <input class="p-2" type="number" name="phone" placeholder="phone number">
+            </div>
+            <div  id="password" class="mb-5">
+                <label class="text-2xl block" >Password</label>
+                <input class="p-2" type="password" name="password" placeholder="************">
+                  <button id="show" class="  bg-black p-2 text-white ">Show Password</button>
+            </div>
+            
+              
+                 <button id="submit" class="bg-black text-white px-8 py-2">Submit</button>
+                 <button id="clear" class="bg-black text-white px-8 py-2">clear</button>
+              
            </form>
        </div>
     </div>
+    <script>
+          let sBtn = document.getElementById("submit");
+            sBtn.addEventListener('click',(e) => {
+             e.preventDefault();
+
+
+             let fullname =document.querySelector('input[type="text"]').value
+             let email =document.querySelector('input[type="email"]').value
+             let date =document.querySelector('input[type="date"]').value
+             let number =document.querySelector('input[type="number"]').value
+             let Password =document.querySelector('input[type="password"]').value
+
+
+             if(!fullname || fullname== ""){
+                let span =document.createElement("span")
+                span.classList.add ("text-red-500", "block")
+                span.innerText ="full name can not be empty"
+                document.getElementById("fullname").append(span)
+             }
+             if(!email || email== ""){
+                let span =document.createElement("span")
+                span.classList.add ("text-red-500", "block")
+                span.innerText ="email can not be empty"
+                document.getElementById("email").append(span)
+             }
+          })
+    </script>
 </body>
 </html>
