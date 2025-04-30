@@ -7,17 +7,19 @@
     <title>LOGIN</title>
 </head>
 <body>
+     
     <div class="  bg-gradient-to-r from-blue-400 to-blue-700  h-screen">
-       <div class=" max-w-md p-3   mx-auto bg-blue-200 border-[3px] border-red-700">
+       <div class=" max-w-md p-8   mx-auto bg-blue-200 border-[3px] border-red-700">
+            <div id="outcome"></div>
             <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">Register</h1>
           <form>
             <div id="fullname" class="mb-5">
              <label class="text-2xl block" > Fullname</label>
-             <input class="p-2" type="text" name="Fullname" placeholder="Fullname">
+             <input class="p-2" type="text" name="fullname" placeholder="Fullname">
             </div>
             <div id="email" class="mb-5">
                 <label class="text-2xl block" >Email</label>
-                <input class="p-2" type="email" name="Email" placeholder="Email">
+                <input class="p-2" type="email" name="email" placeholder="Email">
             </div>
             <div id="date" class="mb-5" >
                 <label class="text-2xl block"  >Date of birth</label>
@@ -35,7 +37,7 @@
             
               
                  <button id="submit" class="bg-black text-white px-8 py-2">Submit</button>
-                 <button id="clear" class="bg-black text-white px-8 py-2">clear</button>
+                 <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
               
            </form>
        </div>
@@ -45,7 +47,14 @@
             sBtn.addEventListener('click',(e) => {
              e.preventDefault();
 
+             let spans =document.querySelectorAll('span')
+             if (spans.length > 0){
+                spans.forEach( (span)=>{
+                    span.remove();
+                })
+             }
 
+             let isvalid = true
              let fullname =document.querySelector('input[type="text"]').value
              let email =document.querySelector('input[type="email"]').value
              let date =document.querySelector('input[type="date"]').value
@@ -54,12 +63,14 @@
 
 
              if(!fullname || fullname== ""){
+                isvalid =false;
                 let span =document.createElement("span")
                 span.classList.add ("text-red-500", "block")
                 span.innerText ="full name can not be empty"
                 document.getElementById("fullname").append(span)
              }
              if(!email || email== ""){
+                isvalid =false;
                 let span =document.createElement("span")
                 span.classList.add ("text-red-500", "block")
                 span.innerText ="email can not be empty"
@@ -81,6 +92,7 @@
                 let age = calculateAge(birthDate);
 
                 if (!date || date === "" ) {
+                    isvalid =false;
                 let span = document.createElement("span");
                 span.classList.add("text-red-500", "block");
                 span.innerText = "Date of birth cannot be empty ";
@@ -95,12 +107,35 @@
 
                 let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
                 if (!passwordPattern.test(Password)){
+                    isvalid =false;
                     let span =document.createElement("span")
                     span.classList.add("text-red-500","block")
                     span.innerText = "Password must be at least 8 characters long , lowercase letter, one uppercase letter, and one number"
                     document.getElementById("password").appendChild(span)
                 }
+
+                 if(isvalid){
+                document.getElementById("outcome").innerHTML =` <h1 class="text-3xl text-green-700">you have sucessful submit you details</h1>
+                <ul><li>name:${fullname}</li><li>Email:${email}</li><li>Date of Birth:${date}</li><li>phone:${number}</li> <li>password:${Password}</li></ul>`
+                 document.querySelector('form').reset()
+                }else{
+                        document.getElementById('outcome').innerHTML = `<span class="text-red-500">Please fill all fields</span>`
+                }
           });
+            
+          let password = document.querySelector('input[type="password"]')
+           let show = document.querySelector("#show")
+           show.addEventListener('click',(e)=>{
+            e.preventDefault()
+             if( password.type == "password"){
+                show.innerText = "Hide password"
+                password.type = "text"
+             } else {
+                show.innerText = "show Password"
+                password.type ="password"
+             }
+           })
+          
     </script>
 </body>
 </html>
