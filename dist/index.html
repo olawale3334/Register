@@ -65,7 +65,42 @@
                 span.innerText ="email can not be empty"
                 document.getElementById("email").append(span)
              }
-          })
+
+
+             function calculateAge(birthDate) {
+                let today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+                }
+
+                let birthDate = new Date(date);
+                let age = calculateAge(birthDate);
+
+                if (!date || date === "" ) {
+                let span = document.createElement("span");
+                span.classList.add("text-red-500", "block");
+                span.innerText = "Date of birth cannot be empty ";
+                document.getElementById("date").appendChild(span);
+
+                }else if (!date || date === "" || age<18 ) {
+                let span = document.createElement("span");
+                span.classList.add("text-red-500", "block");
+                span.innerText = "age is less than 18 ";
+                document.getElementById("date").appendChild(span);
+                }
+
+                let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+                if (!passwordPattern.test(Password)){
+                    let span =document.createElement("span")
+                    span.classList.add("text-red-500","block")
+                    span.innerText = "Password must be at least 8 characters long , lowercase letter, one uppercase letter, and one number"
+                    document.getElementById("password").appendChild(span)
+                }
+          });
     </script>
 </body>
 </html>
