@@ -157,37 +157,37 @@
              }
            })
 
-            // let loginBtn = document.getElementById("login");
-            // let clearBtn = document.getElementById("clear");
+                    let loginBtn = document.getElementById("login");
+            let clearBtn = document.getElementById("clear");
 
-            // if (loginBtn && clearBtn) {
-            // loginBtn.addEventListener("click", (e) => {
-            //     e.preventDefault();
+            if (loginBtn && clearBtn) {
+            loginBtn.addEventListener("click", (e) => {
+                e.preventDefault();
 
-            //     let fullname = document.querySelector('input[name="fullname"]').value;
-            //     let email = document.getElementById("email2").value;
+                let fullname = document.querySelector('input[name="fullname"]').value;
+                let email = document.getElementById("email2").value;
 
-            //     // Hard-coded credentials
-            //     let validFullname = "John Doe";
-            //     let validEmail = "user@example.com";
+                // Hard-coded credentials
+                let validFullname = "John Doe";
+                let validEmail = "user@example.com";
 
-            //     // Validate data
-            //     if (!fullname || !email) {
-            //     alert("Please fill in both fields");
-            //     } else if (fullname !== validFullname || email !== validEmail) {
-            //     alert("Invalid fullname or email");
-            //     } else {
-            //     alert("Login successful!");
-            //     }
-            // });
+                // Validate data
+                if (!fullname || !email) {
+                alert("Please fill in both fields");
+                } else if (fullname !== validFullname || email !== validEmail) {
+                alert("Invalid fullname or email");
+                } else {
+                alert("Login successful!");
+                }
+            });
 
-            // clearBtn.addEventListener("click", () => {
-            //     document.querySelector('input[name="fullname"]').value = "";
-            //     document.getElementById("email2").value = "";
-            // });
-            // } else {
-            // console.log("Elements not found");
-            // }
+            clearBtn.addEventListener("click", () => {
+                document.querySelector('input[name="fullname"]').value = "";
+                document.getElementById("email2").value = "";
+            });
+            } else {
+            console.log("Elements not found");
+            }
 
 
 
