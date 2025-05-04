@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
 <body>
-    <div  class=" max-w-md p-10 h-96 mt-8  bg-blue-200 border-[3px] border-red-700">
-    </form>
-    
-    <div class=""> 
-         <div id="outcome2"></div>
-       <form >
-   <div  class="">
-       <label class="text-2xl block" >Email</label>
-       <input class="p-2" type="text" name="email" placeholder="email">
-   </div>
-     <div class="mb-5">
-       <label class="text-2xl block" >password</label>
-       <input id="email2" class="p-2" type="password" name="password" placeholder="password">
-     </div>
-     <button id="login" class="bg-black text-white px-8 py-2">Login</button>
-     <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
-    </div> 
-</form>
-      </div>
+        <div class="  bg-gradient-to-r from-blue-400 to-blue-700   h-screen">
+            <div class="  max-w-md p-5 mx-auto  bg-blue-200 border-[3px] border-red-700 ">
+                <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">LOGIN</h1>
+                
+                <div class="ml-20">
+                    <label class="block" >Email</label>
+                    <input   class="p-2 w-60" type="email" name="email" placeholder="email ">
+                </div>
+                <div class="mb-5 ml-20">
+                    <div id="passError"></div>
+                    <label class="block" >Password</label>
+                    <input  class="p-2 w-60" type="password" name="password" placeholder="password">
+                    
+                 
+                </div>
+                <div class="ml-20">
+                    <button id="submit" class="bg-black text-white px-8 py-2">Submit</button>
+                    <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            
+        </script>
+          
 </body>
 </html>
