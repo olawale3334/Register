@@ -123,7 +123,7 @@
               passError.appendChild(symbolError)
           }
 
-           let password = document.getElementById('input[name="password"]')
+           let password = document.querySelector('input[name="password"]')
            password.addEventListener ( 'input', (e) =>{
             e.preventDefault()
             validatePasswordMessage(e.target.value)
