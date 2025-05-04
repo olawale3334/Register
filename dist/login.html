@@ -100,7 +100,34 @@
                 error.innerText =" password must be greater than 7"
                 passError.appendChild(span)
             }
+
+              for(p in password){
+                if (password[p] >="A" || password[p] <="Z"){
+                    upperCaseError.classList.add("text-green-500")
+                    upperCaseError.innerText="uppercase available"
+                }else if (password[p] >="a" || password[p] <="a"){
+                    lowerCaseError.classList.add("text-green-500")
+                    lowerCaseError.innerText="lowercase available"
+                } else if (password[p] >= 0|| password[p] <= 9){
+                    numberError.classList.add("text-green-500")
+                    numberError.innerText="number available"
+                } else{
+                     symbolError.classList.add("text-green-500")
+                    symbolError.innerText="symbol available"
+                }
+              }
+
+              passError.appendChild(upperCaseError)
+              passError.appendChild(lowerCaseError)
+              passError.appendChild(numberError)
+              passError.appendChild(symbolError)
           }
+
+           let password = document.getElementById('input[name="password"]')
+           password.addEventListener ( 'input', (e) =>{
+            e.preventDefault()
+            validatePasswordMessage(e.target.value)
+           })
         </script>
           
 </body>
