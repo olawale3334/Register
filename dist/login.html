@@ -9,27 +9,98 @@
 <body>
         <div class="  bg-gradient-to-r from-blue-400 to-blue-700   h-screen">
             <div class="  max-w-md p-5 mx-auto  bg-blue-200 border-[3px] border-red-700 ">
-                <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">LOGIN</h1>
+                <form >
+                    <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">LOGIN</h1>
                 
-                <div class="ml-20">
-                    <label class="block" >Email</label>
-                    <input   class="p-2 w-60" type="email" name="email" placeholder="email ">
-                </div>
-                <div class="mb-5 ml-20">
-                    <div id="passError"></div>
-                    <label class="block" >Password</label>
-                    <input  class="p-2 w-60" type="password" name="password" placeholder="password">
+                    <div  id="email" class="">
+                        <label class="block" >Email</label>
+                        <input   class="p-2 w-60" type="email" name="email" placeholder="email ">
+                    </div>
+                    <div id="passError" class="mb-5 ">
+                        <div id="passError"></div>
+                        <label class="block" >Password</label>
+                        <input  class="p-2 w-60" type="password" name="password" placeholder="password">
+                        
+                     
+                    </div>
+                   
+                        <button id="submit1" class="bg-black text-white px-8 py-2">Submit</button>
+                        <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
                     
-                 
-                </div>
-                <div class="ml-20">
-                    <button id="submit" class="bg-black text-white px-8 py-2">Submit</button>
-                    <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
-                </div>
+                </form>
+               
             </div>
         </div>
         <script>
-            
+           let submit = document.getElementById("submit1")
+           submit.addEventListener( 'click', (e) => {
+             e.preventDefault()
+
+                 let email = document.querySelector('input[type="email"]').value
+                 let password = document.querySelector('input[type="password"]').value
+
+           })
+           function validateEmail(email){
+             if(email.includes('..')) return `${email} is invalid`
+             let part = email.split('@');
+              let local =part[0]
+              let domain = part[1]
+              if (domain.includes('..')) return`${email}is invalid`
+              else{
+                return `${email}is valid`
+              }
+           }
+        //    console.log(validateEmail("user@@..com"));
+        //    console.log(validateEmail("user@..com"));
+        //    console.log(validateEmail("user@.com"));
+           
+
+          function validatePassword(password){
+            let passError =document.getElementById("passError")
+            let uppercase ={status:false, message:'no uppercase'}
+            let lowercase ={status:false, message:'no lowercase'}
+            let number ={status:false, message:'no number'}
+            let symbol ={status:false, message:'no symbol'}
+            let length ={status:false, message:"password mus be greater than 7"}
+            if (password.length < 8) length = {status:false, message:"password mus be greater than 7"}
+
+             let newp = password.split('')
+             newp.forEach( (p) => {
+                if (p >="A" || p <="Z") uppercase ={status:true, message:' uppercase available'}
+                else if (p >= "a"  || p <= "z") uppercase ={status:true, message:' lowercase available'}
+                else if (p >= 0  || p <= 9) uppercase ={status:true, message:' number available'}
+                else{
+                    symbol ={status:true, message:' symbol available'}
+                }
+                return {status: uppercase.status &&  lowercase.status &&  symbol.status &&  number.status,uppercase,lowercase,number,symbol,length }
+             });
+          }
+          function validatePasswordMessage(password){
+            let passError = document.getElementById("passError")
+            passError.innerHTML = "";
+            let upperCaseError = document.createElement("p")
+            upperCaseError.classList.add("text-red-500")
+            upperCaseError.innerText="no uppercase"
+
+            let lowerCaseError = document.createElement("p")
+            lowerCaseError.classList.add("text-red-500")
+            lowerCaseError.innerText="no lowercase"
+
+            let numberError = document.createElement("p")
+            numberError.classList.add("text-red-500")
+            numberError.innerText="no number"
+
+            let symbolError = document.createElement("p")
+            symbolError.classList.add("text-red-500")
+            symbolError.innerText="no symbol"
+
+            if (password.length < 8) {
+                let error = document.createElement("p")
+                error.classList.add("text-red-500")
+                error.innerText =" password must be greater than 7"
+                passError.appendChild(span)
+            }
+          }
         </script>
           
 </body>
