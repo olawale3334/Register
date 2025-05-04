@@ -9,8 +9,9 @@
 </head>
 <body>
      
-    <div class="  bg-gradient-to-r from-blue-400 to-blue-700  h-screen">
-       <div class=" max-w-md p-8   mx-auto bg-blue-200 border-[3px] border-red-700">
+    <div class="  bg-gradient-to-r from-blue-400 to-blue-700   h-screen">
+      <div class="container mx-auto justify-around  lg:flex ">
+       <div class=" max-w-md p-8    bg-blue-200 border-[3px] border-red-700">
             
             <h1 class="text-3xl text-center hover:text-red-400 cursor-pointer">Register</h1>
             <div id="outcome"></div>
@@ -41,26 +42,33 @@
                  <button id="submit" class="bg-black text-white px-8 py-2">Submit</button>
                  <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
               
-           </form>
-             <div class="mt-5"> 
-            <div id="name" class="mb-5">
-                <label class="text-2xl block" > Fullname</label>
-                <input class="p-2" type="text" name="fullname" placeholder="Fullname">
-            </div>
-              <div>
-                <label class="text-2xl block" >Email</label>
-                <input id="email2" class="p-2" type="email" name="email" placeholder="Email">
-              </div>
-              <button id="login" class="bg-black text-white px-8 py-2">Login</button>
-              <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
-             </div> 
-
+        
            <div class="mt-5">
             <a href="https://github.com/olawale3334/Register"target="_blank"><i class='bx text-7xl  bxl-github'></i></a>
             </div>
          </div>
-           
+
+          <div  class=" max-w-md p-10 h-96 mt-8  bg-blue-200 border-[3px] border-red-700">
+        </form>
+        
+        <div class=""> 
+             <div id="outcome2"></div>
+           <form >
+       <div  class="">
+           <label class="text-2xl block" >Email</label>
+           <input class="p-2" type="text" name="email" placeholder="email">
+       </div>
+         <div class="mb-5">
+           <label class="text-2xl block" >password</label>
+           <input id="email2" class="p-2" type="password" name="password" placeholder="password">
+         </div>
+         <button id="login" class="bg-black text-white px-8 py-2">Login</button>
+         <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
+        </div> 
+   </form>
+          </div>
     </div>
+</div>
     <script>
           let sBtn = document.getElementById("submit");
             sBtn.addEventListener('click',(e) => {
@@ -157,37 +165,7 @@
              }
            })
 
-                    let loginBtn = document.getElementById("login");
-            let clearBtn = document.getElementById("clear");
-
-            if (loginBtn && clearBtn) {
-            loginBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-
-                let fullname = document.querySelector('input[name="fullname"]').value;
-                let email = document.getElementById("email2").value;
-
-                // Hard-coded credentials
-                let validFullname = "John Doe";
-                let validEmail = "user@example.com";
-
-                // Validate data
-                if (!fullname || !email) {
-                alert("Please fill in both fields");
-                } else if (fullname !== validFullname || email !== validEmail) {
-                alert("Invalid fullname or email");
-                } else {
-                alert("Login successful!");
-                }
-            });
-
-            clearBtn.addEventListener("click", () => {
-                document.querySelector('input[name="fullname"]').value = "";
-                document.getElementById("email2").value = "";
-            });
-            } else {
-            console.log("Elements not found");
-            }
+            
 
 
 
