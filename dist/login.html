@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
@@ -16,28 +18,49 @@
                         <label class="block" >Email</label>
                         <input   class="p-2 w-60" type="email" name="email" placeholder="email ">
                     </div>
-                    <div id="passError" class="mb-5 ">
+                   
+                    <div id="password" class="mb-5">
+                        <label class="block">Password</label> 
+                        <div>
+                        <input class="p-3 w-60  border-none bg-white" type="password" name="password" placeholder="password">
+                       
+                        </div>
                         <div id="passError"></div>
-                        <label class="block" >Password</label>
-                        <input  class="p-2 w-60" type="password" name="password" placeholder="password">
-                        
-                     
+                        <div id="result"></div>
                     </div>
+  
                    
                         <button id="submit1" class="bg-black text-white px-8 py-2">Submit</button>
                         <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
                     
                 </form>
-               
+                
             </div>
         </div>
+
+        
         <script>
            let submit = document.getElementById("submit1")
            submit.addEventListener( 'click', (e) => {
              e.preventDefault()
+                   let p = document.querySelectorAll("p")
+                   if (p.length > 0)
+                    p.forEach( (p) =>{
+                       
+                            p.remove()
+                        
+                    })
 
-                 let email = document.querySelector('input[type="email"]').value
-                 let password = document.querySelector('input[type="password"]').value
+                 let email = document.querySelector('input[type=email]').value
+                 let password = document.querySelector('input[type=password]').value
+
+               let emailValidationResult = validateEmail(email);
+               let passwordValidationResult = validatePassword(password);
+
+                  let result = document.getElementById("result");
+                  result.innerHTML = `<ul><li> Email:${email}</li><li> password: ${password}</li></ul>`
+                  document.querySelector('form').reset(
+                  )
 
            })
            function validateEmail(email){
@@ -46,9 +69,9 @@
               let local =part[0]
               let domain = part[1]
               if (domain.includes('..')) return`${email}is invalid`
-              else{
+            
                 return `${email}is valid`
-              }
+            
            }
         //    console.log(validateEmail("user@@..com"));
         //    console.log(validateEmail("user@..com"));
@@ -66,9 +89,9 @@
 
              let newp = password.split('')
              newp.forEach( (p) => {
-                if (p >="A" || p <="Z") uppercase ={status:true, message:' uppercase available'}
-                else if (p >= "a"  || p <= "z") uppercase ={status:true, message:' lowercase available'}
-                else if (p >= 0  || p <= 9) uppercase ={status:true, message:' number available'}
+                if (p >="A" && p <="Z") uppercase ={status:true, message:' uppercase available'}
+                else if (p >= "a"  && p <= "z") uppercase ={status:true, message:' lowercase available'}
+                else if (p >= 0  && p <= 9) uppercase ={status:true, message:' number available'}
                 else{
                     symbol ={status:true, message:' symbol available'}
                 }
@@ -101,18 +124,18 @@
                 passError.appendChild(error)
             }
 
-              for(p in password){
-                if (password[p] >="A" || password[p] <="Z"){
-                    upperCaseError.classList.add("text-green-500")
-                    upperCaseError.innerText="uppercase available"
-                }else if (password[p] >="a" || password[p] <="a"){
-                    lowerCaseError.classList.add("text-green-500")
+              for( let p in password){
+                if (password[p] >="A" && password[p] <="Z"){
+                    upperCaseError.classList.add("text-[#003300]")
+                    upperCaseError.innerHTML="uppercase available"
+                }else if (password[p] >="a" && password[p] <="z"){
+                    lowerCaseError.classList.add("text-[#003300]")
                     lowerCaseError.innerText="lowercase available"
-                } else if (password[p] >= 0|| password[p] <= 9){
-                    numberError.classList.add("text-green-500")
+                } else if (password[p] >= 0 && password[p] <= 9){
+                    numberError.classList.add("text-[#003300]")
                     numberError.innerText="number available"
                 } else{
-                     symbolError.classList.add("text-green-500")
+                     symbolError.classList.add("text-[#003300]")
                     symbolError.innerText="symbol available"
                 }
               }
