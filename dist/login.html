@@ -26,13 +26,13 @@
                        
                         </div>
                         <div id="passError"></div>
-                        <div id="result"></div>
+                      
                     </div>
   
                    
                         <button id="submit1" class="bg-black text-white px-8 py-2">Submit</button>
                         <button id="clear" type="reset" class="bg-black text-white px-8 py-2">clear</button>
-                    
+                        <div id="result"></div>
                 </form>
                 
             </div>
@@ -53,12 +53,16 @@
 
                  let email = document.querySelector('input[type=email]').value
                  let password = document.querySelector('input[type=password]').value
-
+                      
+             localStorage.setItem("Email", email);
+             localStorage.setItem("Password", password);
+          
                let emailValidationResult = validateEmail(email);
                let passwordValidationResult = validatePassword(password);
 
                   let result = document.getElementById("result");
-                  result.innerHTML = `<ul><li> Email:${email}</li><li> password: ${password}</li></ul>`
+                  result.classList.add("text-[#003300]")
+                  result.innerHTML = `<p> you have sucessful</p>`
                   document.querySelector('form').reset(
                   )
 
@@ -150,7 +154,10 @@
            password.addEventListener ( 'input', (e) =>{
             e.preventDefault()
             validatePasswordMessage(e.target.value)
+
            })
+            
+       
         </script>
           
 </body>
